@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries by population less than 2lakhs</title>
+</head>
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET","https://restcountries.com/v3.1/all");
+        xhr.send();
+        xhr.onload = () =>{
+            if(xhr.status ===200){
+                let countries = JSON.parse(xhr.responseText);
+                let countryWithLessPopulation = countries.filter((country) =>{
+                    return country.population<200000;
+                });
+                console.log(countryWithLessPopulation);
+            }
+            else{
+                console.log("Not Found")
+            }
+        }
+    </script>
+</body>
+</html>

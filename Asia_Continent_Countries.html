@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asia Continent Countries</title>
+</head>
+
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://restcountries.com/v3.1/all");
+        xhr.send();
+
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                let countryDetails = JSON.parse(xhr.responseText);
+                for(let obj of countryDetails){
+                    
+                }
+
+
+                console.log(countryDetails.filter((country) =>{
+                    return country.region === "Asia";
+                }));
+            }
+        }
+    </script>
+</body>
+
+</html>

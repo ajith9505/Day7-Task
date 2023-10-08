@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USD Country</title>
+</head>
+
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://restcountries.com/v3.1/all");
+        xhr.send();
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                let countries = JSON.parse(xhr.responseText);
+                console.log(countries);
+                for (let key in countries) {
+                    if (countries[key]["currencies"]["USD"]) {
+                        console.log(countries[key]["name"]["common"]);
+                    }
+                }
+            }
+            else {
+                console.log("Not Found")
+            }
+        }
+    </script>
+</body>
+
+</html>
